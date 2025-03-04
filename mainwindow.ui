@@ -15,6 +15,26 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_6">
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButton_del">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Удалить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="pushButton_solve">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Расчитать</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1" colspan="2">
      <widget class="QTabWidget" name="tabWidget">
       <property name="minimumSize">
@@ -206,6 +226,29 @@
       </widget>
      </widget>
     </item>
+    <item row="0" column="0" rowspan="2">
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="pushButton__update">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Изменить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="pushButton_save">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Сохранить</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="pushButton_load">
       <property name="text">
@@ -222,49 +265,6 @@
        <string>Добавить</string>
       </property>
      </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="pushButton__update">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Изменить</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="pushButton_del">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Удалить</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="pushButton_save">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Сохранить</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPushButton" name="pushButton_solve">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Расчитать</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" rowspan="2">
-     <widget class="QGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>

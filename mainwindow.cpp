@@ -6,6 +6,26 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
+
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("data.db");
+
+    if(!db.open()) {
+        QMessageBox::critical(this, "Ошибка", "Не удалость открыть бд");
+        return;
+    }
+    //создаю таблицы
+    QSqlQuery query;
+    query.exec("CREATE TABLE People (id INTEGER PRIMARY KEY AUTOINCREMENT, fio TEXT, weight REAL, departament TEXT)");
+    query.exec("CREATE TABLE Departaments (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, rotation INTEGER)");
+    query.exec("CREATE TABLE Quadrants (id INTEGER PRIMARY KEY AUTOINCREMENT, x REAL, y REAL, width REAL, height REAL)");
+    query.exec("CREATE TABLE Objects (id INTEGER PRIMARY KEY AUTOINCREMENT, x REAL, y REAL, height REAL, width REAL, quadrant INTEGER, color TEXT)");
+
+
+
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::updateButtonState);
 
     connect(ui->lineEdit_manSection, &QLineEdit::textChanged, this, &MainWindow::updateButtonState);
@@ -117,4 +137,110 @@ void MainWindow::updateButtonState()
 
     ui->pushButton_add->setEnabled(enabled);
 }
+
+
+/*void MainWindow::on_pushButton_add_clicked()
+{
+        QString filename = "data.csv";
+        QFile file(filename);
+
+        if(!file.open(QIODevice::Append | QIODevice::Text)) {
+            QMessageBox::warning(this, "Ошибка", "Не удалось открыть файл");
+            return;
+        }
+        QTextStream out(&file);
+
+
+        //сохранение данных из lineedit в csv
+        out << ui->lineEdit_manFio->text() << ","
+        << ui->lineEdit_manWeight->text() << ","
+        << ui->lineEdit_manSection->text() << ","
+        << ui->lineEdit_sectionName->text() << ","
+        << ui->lineEdit_sectionRenew->text() << ","
+        << ui->lineEdit_quadrantX->text() << ","
+        << ui->lineEdit_quadrantY->text() << ","
+        << ui->lineEdit_quadrantWidth->text() << ","
+        << ui->lineEdit_quadrantHeight->text() << ","
+        << ui->lineEdit_objectX->text() << ","
+        << ui->lineEdit_objectY->text() << ","
+        << ui->lineEdit_objectHeight->text() << ","
+        << ui->lineEdit_objectWidth->text() << ","
+        << ui->lineEdit_objectCololr->text() << ","
+        << ui->lineEdit_objectQuadrant->text() << "\n";
+
+
+        file.close();
+        QMessageBox::information(this, "успех", "данные успешно сохранены");
+}*/
+
+
+void MainWindow::on_pushButton_add_clicked()
+{
+    QSqlQuery query;
+    //запросы для вставки в таблицу people
+    query.prepare("INSERT INTO People (fio, weight, departament) VALUES (:fio, :weight, :departament)");
+    query.bindValue(":fio", ui->lineEdit_manFio->text());
+    query.bindValue(":weight", ui->lineEdit_manWeight->text().toDouble());
+    query.bindValue(":departament", ui->lineEdit_manSection->text());
+
+    if (!query.exec()) {
+        QMessageBox::warning(this, "Ошибка", "Не удалось сохранть данные" + query.lastError().text());
+        return;
+
+
+}     //для второй
+    query.prepare("INSERT INTO Departaments (name, rotation) VALUES (:name, :rotation)");
+
+    query.bindValue(":name", ui->lineEdit_sectionName->text());
+    query.bindValue(":rotation", ui->lineEdit_sectionRenew->text());
+
+    if(!query.exec()) {
+        QMessageBox::warning(this, "Ошибка", "Не удалось сохранть данные" + query.lastError().text());
+        return;
+    }
+
+
+
+    //для третей
+    query.prepare("INSERT INTO Quadrants (x, y, width, height) VALUES (:x, :y, :width, :height)");
+
+    query.bindValue(":x", ui->lineEdit_quadrantX->text().toDouble());
+    query.bindValue(":y", ui->lineEdit_quadrantY->text().toDouble());
+    query.bindValue(":width", ui->lineEdit_quadrantWidth->text().toDouble());
+    query.bindValue(":height", ui->lineEdit_quadrantHeight->text().toDouble());
+
+
+     if (!query.exec()) {
+
+         QMessageBox::warning(this, "Ошибка", "Не удалось сохранить данные в таблицу 'Quadrants': " + query.lastError().text());
+
+         return; // Прерываем выполнение, если произошла ошибка
+
+     }
+     // Запросы для вставки в таблицу Objects
+
+        query.prepare("INSERT INTO Objects (x, y, height, width, quadrant, color) VALUES (:x, :y, :height, :width, :quadrant, :color)");
+
+        query.bindValue(":x", ui->lineEdit_objectX->text().toDouble());
+        query.bindValue(":y", ui->lineEdit_objectY->text().toDouble());
+        query.bindValue(":height", ui->lineEdit_objectHeight->text().toDouble());
+        query.bindValue(":width", ui->lineEdit_objectWidth->text().toDouble());
+        query.bindValue(":quadrant", ui->lineEdit_objectQuadrant->text().toInt());
+        query.bindValue(":color", ui->lineEdit_objectCololr->text());
+
+
+        if (!query.exec()) {
+
+            QMessageBox::warning(this, "Ошибка", "Не удалось сохранить данные в таблицу 'Objects': " + query.lastError().text());
+
+            return; // Прерываем выполнение, если произошла ошибка
+
+        }
+
+
+
+
+}
+
+
 
