@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QDebug>
+#include <QIntValidator>
+#include <QDoubleValidator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +19,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_load_clicked();
+    void updateButtonState();
+
 private:
     Ui::MainWindow *ui;
+    QIntValidator *validator_int;
+    QDoubleValidator *validator_double;
+
+
 };
 #endif // MAINWINDOW_H
