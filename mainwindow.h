@@ -10,10 +10,16 @@
 #include<QGraphicsItem>
 #include<QGraphicsRectItem>
 #include<QGraphicsView>
+#include<QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+struct ro_obj{
+    int id, x, y, w, h, id_quadra;
+    QColor color;
+};
 
 class MainWindow : public QMainWindow
 {
@@ -28,6 +34,7 @@ private slots:
     void updateButtonState();
 
 private:
+    QVector<ro_obj> ro_objs;
     Ui::MainWindow *ui;
     QIntValidator *validator_int;
     QDoubleValidator *validator_double;

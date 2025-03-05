@@ -51,9 +51,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::ro_paint()
 {
-    QGraphicsRectItem *rect = new QGraphicsRectItem(0,0, 40, 80);
-    rect->setBrush(QBrush(QColor("red")));
-    scene->addItem(rect);
+    for(auto it : ro_objs){
+        QGraphicsRectItem *rect = new QGraphicsRectItem(it.x, it.y, it.w, it.h);
+        rect->setBrush(QBrush(it.color));
+        scene->addItem(rect);
+    }
+
 }
 
 // Получение пути к файлам
