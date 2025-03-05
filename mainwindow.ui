@@ -24,17 +24,17 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tab_man">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Люди</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>TextLabel</string>
+           <string>ФИО: </string>
           </property>
          </widget>
         </item>
@@ -44,7 +44,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Вес: </string>
           </property>
          </widget>
         </item>
@@ -54,7 +54,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Подразделение: </string>
           </property>
          </widget>
         </item>
@@ -63,15 +63,15 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tab_section">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Подразделения</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Название: </string>
           </property>
          </widget>
         </item>
@@ -81,7 +81,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Ротация: </string>
           </property>
          </widget>
         </item>
@@ -90,15 +90,15 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="tab_quadrant">
        <attribute name="title">
-        <string>Страница</string>
+        <string>Квадранты</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>TextLabel</string>
+           <string>X: </string>
           </property>
          </widget>
         </item>
@@ -108,7 +108,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_12">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Y: </string>
           </property>
          </widget>
         </item>
@@ -118,7 +118,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_11">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Ширина: </string>
           </property>
          </widget>
         </item>
@@ -128,7 +128,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Высота: </string>
           </property>
          </widget>
         </item>
@@ -137,15 +137,15 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="tab_object">
        <attribute name="title">
-        <string>Страница</string>
+        <string>Объекты</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
          <widget class="QLabel" name="label_14">
           <property name="text">
-           <string>TextLabel</string>
+           <string>X: </string>
           </property>
          </widget>
         </item>
@@ -155,7 +155,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_15">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Y: </string>
           </property>
          </widget>
         </item>
@@ -165,7 +165,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_16">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Высота: </string>
           </property>
          </widget>
         </item>
@@ -175,7 +175,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Ширина: </string>
           </property>
          </widget>
         </item>
@@ -185,7 +185,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_18">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Квадрант: </string>
           </property>
          </widget>
         </item>
@@ -195,7 +195,7 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Цвет: </string>
           </property>
          </widget>
         </item>
@@ -215,6 +215,9 @@
     </item>
     <item row="1" column="2">
      <widget class="QPushButton" name="pushButton_add">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Добавить</string>
       </property>
@@ -222,6 +225,9 @@
     </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="pushButton__update">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Изменить</string>
       </property>
@@ -229,6 +235,9 @@
     </item>
     <item row="2" column="2">
      <widget class="QPushButton" name="pushButton_del">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Удалить</string>
       </property>
@@ -236,6 +245,9 @@
     </item>
     <item row="3" column="1">
      <widget class="QPushButton" name="pushButton_save">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Сохранить</string>
       </property>
@@ -243,6 +255,9 @@
     </item>
     <item row="3" column="2">
      <widget class="QPushButton" name="pushButton_solve">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Расчитать</string>
       </property>
