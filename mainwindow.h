@@ -6,6 +6,10 @@
 #include <QDebug>
 #include <QIntValidator>
 #include <QDoubleValidator>
+#include<QGraphicsScene>
+#include<QGraphicsItem>
+#include<QGraphicsRectItem>
+#include<QGraphicsView>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,7 +22,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void ro_paint();
 private slots:
     void on_pushButton_load_clicked();
     void updateButtonState();
@@ -27,6 +31,7 @@ private:
     Ui::MainWindow *ui;
     QIntValidator *validator_int;
     QDoubleValidator *validator_double;
+    QGraphicsScene *scene;
 
 
 };

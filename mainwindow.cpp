@@ -36,11 +36,24 @@ MainWindow::MainWindow(QWidget *parent)
 //    ui->lineEdit_quadrantY->setValidator(validator_int);
 
 //    ui->lineEdit_manWeight->setValidator(validator_double);
+    scene = new QGraphicsScene();
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->setAlignment(Qt::AlignBottom|Qt::AlignLeft);
+    ui->graphicsView->setSceneRect(0,0, ui->graphicsView->width(), ui->graphicsView->height());
+    ui->graphicsView->scale(1,-1);
+    ro_paint();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::ro_paint()
+{
+    QGraphicsRectItem *rect = new QGraphicsRectItem(0,0, 40, 80);
+    rect->setBrush(QBrush(QColor("red")));
+    scene->addItem(rect);
 }
 
 // Получение пути к файлам
