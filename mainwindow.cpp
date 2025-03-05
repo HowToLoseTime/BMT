@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setAlignment(Qt::AlignBottom|Qt::AlignLeft);
     ui->graphicsView->setSceneRect(0,0, ui->graphicsView->width(), ui->graphicsView->height());
     ui->graphicsView->scale(1,-1);
-    ro_paint();
+
 }
 
 MainWindow::~MainWindow()
@@ -51,6 +51,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::ro_paint()
 {
+    scene->clear();
+
+
+
+    scene->addLine(15, 0, 15 ,ui->graphicsView->height());
+    scene->addLine(ui->graphicsView->width(), 15, 0, 15);
+    scene->addText("x")->setPos(scene->width()-20, -8);
+    QGraphicsTextItem *tt =scene->addText("y");
+    tt->setPos(2, scene->height()-40);
+    tt->setRotation(180);
     for(auto it : ro_objs){
         QGraphicsRectItem *rect = new QGraphicsRectItem(it.x, it.y, it.w, it.h);
         rect->setBrush(QBrush(it.color));
@@ -62,6 +72,7 @@ void MainWindow::ro_paint()
 // Получение пути к файлам
 void MainWindow::on_pushButton_load_clicked()
 {
+    ro_paint();
     QString path_file = QFileDialog::getOpenFileName(this, "Открыть файл", "", "Файлы данных (*.csv)");
 }
 

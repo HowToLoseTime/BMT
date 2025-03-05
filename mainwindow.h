@@ -11,6 +11,7 @@
 #include<QGraphicsRectItem>
 #include<QGraphicsView>
 #include<QVector>
+#include<QGraphicsTextItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
