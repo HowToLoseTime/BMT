@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
     validator_double = new QDoubleValidator(-1, 1, 2, this);
     validator_double->setNotation(QDoubleValidator::StandardNotation);
 
+    repaint();
 //    ui->lineEdit_quadrantX->setValidator(validator_int);
 //    ui->lineEdit_quadrantY->setValidator(validator_int);
 
@@ -61,6 +62,17 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::paintEvent(QPaintEvent *e)
+{
+    QPainter p;
+    int x0 = ui->label_5->x(), y0 = ui->label_5->y(), xn = ui->label_5->width() + x0,yn = y0 + ui->label_5->height();
+    p.begin(this);
+    p.setBrush(Qt::white);
+    p.drawRect(x0,y0,xn,yn);
+    p.drawLine(x0,y0,xn,yn);
+    p.end();
 }
 
 // Получение пути к файлам

@@ -13,6 +13,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QMessageBox>
+#include<QPainter>
+#include<QPaintEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,7 +27,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void paintEvent(QPaintEvent *e);
 private slots:
     void on_pushButton_load_clicked();
     void updateButtonState();
@@ -36,6 +38,7 @@ private:
     Ui::MainWindow *ui;
     QIntValidator *validator_int;
     QDoubleValidator *validator_double;
+
 
 
 };
